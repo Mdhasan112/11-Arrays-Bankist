@@ -73,4 +73,43 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+/*
 /////////////////////////////////////////////////
+//SLICE
+//SLICE copy the original array
+
+let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4));
+console.log(arr.slice(-2));
+console.log(arr.slice(1, -2));
+console.log(arr.slice()); //duplicate
+//or
+console.log([...arr]); //spreed operator
+
+//SPLICE
+//SPLICE change the entire array
+console.log(arr.splice(2, 2, 10, 20));
+console.log(arr);
+console.log(arr.splice(-1, 2, 50, 70));
+console.log(arr);
+// console.log(arr.splice(-1));
+// console.log(arr);
+
+//Reverse
+arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+const arr2 = ['k', 'l', 'm', 'n', 'o', 'p'];
+console.log(arr2.reverse());
+console.log(arr2); //reverse muted main array
+
+//Concat
+const letters = arr.concat(arr2);
+console.log(letters);
+//or
+console.log([...arr, ...arr2]); //another way
+
+//Join
+console.log(letters.join('-'));
+/////////////////////////////////////////
+*/
