@@ -242,4 +242,26 @@ checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
 /////////////////////////////////////////
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// using map
 const euroToUsd = 1.1;
+// const movementsUsd = movements.map(function (mov) {
+//   return mov * euroToUsd;
+// });
+
+const movementsUsd = movements.map(mov => mov * euroToUsd);
+console.log(movementsUsd);
+
+//using for
+const movementsToUsdFor = [];
+for (const mov of movements) movementsToUsdFor.push(mov * euroToUsd);
+console.log(movementsToUsdFor);
+
+const movementsDescriptions = movements.map(
+  (mov, i) =>
+    `movement: ${i + 1} You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+
+console.log(movementsDescriptions);
