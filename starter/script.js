@@ -34,7 +34,6 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
-
 // Elements
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
@@ -75,6 +74,19 @@ const displayMovement = function (movement) {
 };
 
 displayMovement(account1.movements);
+
+/////////////////////////////////////////
+const createUserNames = function (user) {
+  const userName = user
+    .toLocaleLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+  return userName;
+};
+
+console.log(createUserNames('Steven Thomas Williams'));
+
 /////////////////////////////////////////////////
 
 /////////////////////////////////////////////////
@@ -240,6 +252,7 @@ checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 /////////////////////////////////////////
 */
 
+/*
 /////////////////////////////////////////
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -265,3 +278,5 @@ const movementsDescriptions = movements.map(
 );
 
 console.log(movementsDescriptions);
+//////////////////////////////////////////
+*/
