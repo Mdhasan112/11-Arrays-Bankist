@@ -75,7 +75,13 @@ const displayMovement = function (movement) {
 
 displayMovement(account1.movements);
 
-/////////////////////////////////////////
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
 const createUserNames = function (accs) {
   accs.forEach(function (acc) {
     acc.accounts = acc.owner
@@ -101,7 +107,7 @@ console.log(accounts);
 //   ['GBP', 'Pound sterling'],
 // ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /*
 /////////////////////////////////////////////////
@@ -281,4 +287,58 @@ const movementsDescriptions = movements.map(
 
 console.log(movementsDescriptions);
 //////////////////////////////////////////
+*/
+
+/*
+//////////////////////////////////////////
+//filter
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(deposits);
+
+//for
+const depositFor = [];
+for (const mov of movements) {
+  if (mov > 0) depositFor.push(mov);
+}
+
+console.log(depositFor);
+
+//filter
+const withdrawals = movements.filter(function (mov) {
+  return mov < 0;
+});
+console.log(withdrawals);
+
+//for
+const withdrawalsFor = [];
+for (const mov of movements) {
+  if (mov < 0) withdrawalsFor.push(mov);
+}
+console.log(withdrawalsFor);
+///////////////////////////////////////////
+*/
+
+/*
+///////////////////////////////////////////
+// const balance = movements.reduce(function (acc, curr, i, arr) {
+//   console.log(`iteration: ${i} and ${acc} and ${curr}`);
+//   return acc + curr;
+// }, 0);
+const balance = movements.reduce((acc, curr) => acc + curr, 0);
+console.log(balance);
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+//maximum value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+
+console.log(max);
+////////////////////////////////////////
 */
