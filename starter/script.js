@@ -60,7 +60,6 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-///////////////////////////////////////////////
 const displayMovement = function (movement) {
   movement.forEach(function (mov, i) {
     // containerMovements.innerHTML = '';
@@ -115,7 +114,13 @@ const createUserNames = function (accs) {
 };
 
 createUserNames(accounts);
-// console.log(accounts);
+
+//Event handler
+btnLogin.addEventListener('click', function (e) {
+  //Prevent form from submitting
+  e.preventDefault();
+  console.log('Login');
+});
 
 /////////////////////////////////////////////////
 
