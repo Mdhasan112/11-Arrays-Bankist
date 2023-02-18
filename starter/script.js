@@ -79,20 +79,18 @@ const calcDisplayBalance = function (movements) {
   labelBalance.textContent = `${balance}€`;
 };
 
-calcDisplayBalance(account1.movements);
-
-const calcDisplaySummary = function (movement) {
-  const income = movement
+const calcDisplaySummary = function (acc) {
+  const income = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${income}€`;
 
-  const out = movement
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
-  const interest = movement
+  const interest = acc.movements
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
     .filter((int, i, arr) => {
@@ -101,11 +99,10 @@ const calcDisplaySummary = function (movement) {
     .reduce((acc, int) => acc + int);
   labelSumInterest.textContent = `${interest}€`;
 };
-calcDisplaySummary(account1.movements);
 
 const createUserNames = function (accs) {
   accs.forEach(function (acc) {
-    acc.accounts = acc.owner
+    acc.username = acc.owner
       .toLocaleLowerCase()
       .split(' ')
       .map(name => name[0])
@@ -116,10 +113,31 @@ const createUserNames = function (accs) {
 createUserNames(accounts);
 
 //Event handler
+let currentAmount;
 btnLogin.addEventListener('click', function (e) {
   //Prevent form from submitting
   e.preventDefault();
-  console.log('Login');
+
+  const currentAmount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAmount);
+  if (currentAmount?.pin === Number(inputLoginPin.value)) {
+    //Display UI and message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAmount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+    //Clear input field
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+    //Display Movement
+    displayMovement(currentAmount.movements);
+    //Display Balance
+    calcDisplayBalance(currentAmount.movements);
+    //Display Summary
+    calcDisplaySummary(currentAmount);
+  }
 });
 
 /////////////////////////////////////////////////
